@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="estilos.css">
+    <title>Inicio</title>
+</head>
+<body>
+    <h1>Lista de usuario</h1>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Contraseña</th>
+        </tr>
+        <tr>
+            <%  users.forEach( user => { %>
+                <td> <%= user.usuario_id %> </td>
+                <td> <%= user.nom_usuario %></td>
+                <td> <%= user.contraseña %></td>
+                <td>
+                    <a href="/edit/<%= user.usuario_id %>">Editar</a>
+                    <a href="/delete/<%= user.usuario_id %>">Eliminar</a>
+
+             
+
+                </td>    
+            </tr>
+            <% }); %>    
+    </table>
+     <!-- Agregar usuario -->
+     <h2>Agregar Usuario</h2>
+     <form action="/add" method="post">
+         <label for="name">Nombre: </label>
+             <input type="text" name="nom_usuario" id="nom_usuario" maxlength="10" required placeholder="Ingresa nombre de Usuario">
+         <br><br>
+         <label for="email">Contraseña: </label>
+             <input type="text" name="contraseña" id="contraseña" maxlength="8" required placeholder="Ingresa contraseña nueva">
+         <br><br>
+         <button type="submit">Registro</button>
+     
+         </form>
+
+</body>
+</html>
